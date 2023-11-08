@@ -34,3 +34,26 @@ http.interceptors.response.use(
 );
 
 export default http;
+
+// import axios from "axios";
+
+// const token = JSON.parse(localStorage.getItem("currentFiverUser"));
+
+// const http = axios.create({
+//   baseURL: process.env.REACT_APP_PUBLIC_API_URL,
+//   timeout: 30000,
+//   headers: {
+//     TokenCybersoft: process.env.REACT_APP_TOKEN,
+//     token: token?.token,
+//   },
+// });
+
+// http.interceptors.request.use((request) => {
+//   const user = JSON.parse(localStorage.getItem("currentFiverUser"));
+
+//   if (user) {
+//     request.headers.Authorization = `Bearer ${user.token}`;
+//   }
+//   return request;
+// });
+// export default http;

@@ -25,6 +25,20 @@ const Navigation = ({ tab, setTab }) => {
             </div>
           ),
         },
+        {
+          key: "2",
+          label: (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <FileSearchOutlined style={{ fontSize: 17 }} />
+              Details Job Type
+            </div>
+          ),
+        },
       ]}
     />
   );

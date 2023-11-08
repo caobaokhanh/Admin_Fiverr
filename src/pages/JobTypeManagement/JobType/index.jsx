@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Table, Form, Row, Col, Input, Button } from "antd";
+import { Table, Form, Row, Col, Input, Button, Card } from "antd";
 import { Wrapper } from "./styled";
 import { SearchOutlined } from "@ant-design/icons";
 import { column } from "./column";
@@ -76,29 +76,37 @@ const JobType = () => {
     <>
       <Add ref={addRef} getListJobType={getListJobType} />
       <Edit ref={editRef} getListJobType={getListJobType} />
-      <Wrapper>
-        <div style={{ width: "100%" }}>
-          <Form layout="inline">
-            <Row style={{ width: "100%" }}>
-              <Col xs={24} md={16} lg={10} xxl={6}>
-                <Form.Item className="no-margin">
-                  <Input
-                    placeholder="Enter job type name to search"
-                    suffix={<SearchOutlined />}
-                    allowClear
-                    onChange={onChangeKeyWord}
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </div>
-        <div>
-          <Button type="primary" onClick={() => addRef.current.open()}>
-            Add job type
-          </Button>
-        </div>
-      </Wrapper>
+      <Card bodyStyle={{ padding: "10px 25px" }}>
+        <h2>Job Type</h2>
+      </Card>
+      <div style={{ padding: 10 }}>
+        {" "}
+        <Card bodyStyle={{ padding: 15 }}>
+          <Wrapper>
+            <div style={{ width: "100%" }}>
+              <Form layout="inline">
+                <Row style={{ width: "100%" }}>
+                  <Col xs={24} md={16} lg={10} xxl={6}>
+                    <Form.Item className="no-margin">
+                      <Input
+                        placeholder="Enter job type name to search"
+                        suffix={<SearchOutlined />}
+                        allowClear
+                        onChange={onChangeKeyWord}
+                      />
+                    </Form.Item>
+                  </Col>
+                </Row>
+              </Form>
+            </div>
+            <div>
+              <Button type="primary" onClick={() => addRef.current.open()}>
+                Add job type
+              </Button>
+            </div>
+          </Wrapper>
+        </Card>
+      </div>
 
       <div>
         <Table

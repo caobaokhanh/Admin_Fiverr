@@ -1,33 +1,36 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Form, Input, Table, Row, Col, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import { column } from "./columns";
+import { column } from "./column";
 import { useDebouncedCallback } from "use-debounce";
 import Swal from "sweetalert2";
 import { Wrapper } from "./styled";
-import AddJob from "./Modal/AddJob";
-import { apiDeleteJob, apiGetJobsList } from "../../services/request/api";
-import { ShowError, ShowSuccess } from "../../components/Message";
-import useWindowDimensions from "../../services/hooks/useWindowDimensions";
-import EditJob from "./Modal/EditJob";
+import Add from "./Modal/Add";
+// import EditJob from "./Modal/EditJob";
+import {
+  apiGetJobsTypeListDetails,
+  apiDeleteJobsTypeDetails,
+} from "../../../services/request/api/index";
+import { ShowError, ShowSuccess } from "../../../components/Message";
+import useWindowDimensions from "../../../services/hooks/useWindowDimensions";
 
 const JobManagement = () => {
   const { height, width } = useWindowDimensions();
   const [data, setData] = useState([]);
   const [loading, isLoading] = useState(false);
-  const addJobRef = useRef();
+  const addJobTypeDetailsRef = useRef();
   const editRef = useRef();
   const onEdit = (item) => editRef.current.open(item);
-  const getListWork = async (value) => {
+  const getListJobTypeDetails = async (value) => {
     isLoading(true);
-    const data = await apiGetJobsList(value);
+    const data = await apiGetJobsTypeListDetails(value);
     setData(data?.content);
     isLoading(false);
   };
 
   const onSearch = async (value) => {
     const newData = data.filter(
-      (job) => job.tenCongViec.toUpperCase().indexOf(value.toUpperCase()) !== -1
+      (job) => job.tenNhom.toUpperCase().indexOf(value.toUpperCase()) !== -1
     );
     setData(newData);
   };
@@ -37,7 +40,7 @@ const JobManagement = () => {
     if (value) {
       onSearch(value);
     } else {
-      getListWork();
+      getListJobTypeDetails();
     }
   }, 1000);
 
@@ -52,8 +55,8 @@ const JobManagement = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await apiDeleteJob(id);
-          getListWork();
+          await apiDeleteJobsTypeDetails(id);
+          getListJobTypeDetails();
           ShowSuccess("Delete successfully");
         } catch (error) {
           ShowError(error?.response?.data?.content);
@@ -63,15 +66,18 @@ const JobManagement = () => {
   };
 
   useEffect(() => {
-    getListWork();
+    getListJobTypeDetails();
   }, []);
 
   return (
     <>
-      <AddJob ref={addJobRef} getListWork={getListWork} />
-      <EditJob ref={editRef} getListWork={getListWork} />
+      <Add
+        ref={addJobTypeDetailsRef}
+        getListJobTypeDetails={getListJobTypeDetails}
+      />
+      {/* <EditJob ref={editRef} getListJobTypeDetails={getListJobTypeDetails} /> */}
       <Card bodyStyle={{ padding: "10px 25px" }}>
-        <h2>Job Management</h2>
+        <h2>Job Type Details</h2>
       </Card>
       <div style={{ padding: 10 }}>
         <Card bodyStyle={{ padding: 15 }}>
@@ -92,8 +98,11 @@ const JobManagement = () => {
                 </Row>
               </Form>
             </div>
-            <Button type="primary" onClick={() => addJobRef.current.open()}>
-              Add job
+            <Button
+              type="primary"
+              onClick={() => addJobTypeDetailsRef.current.open()}
+            >
+              Add job type details
             </Button>
           </Wrapper>
 

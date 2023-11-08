@@ -7,6 +7,7 @@ export const column = (onEdit, onDelete) => [
     title: "Name",
     dataIndex: "tenLoaiCongViec",
   },
+
   {
     title: "",
     width: 100,

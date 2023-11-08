@@ -5,10 +5,11 @@ import { apiAddJob, apiUploadImage } from "../../../services/request/api";
 import { ShowError, ShowSuccess } from "../../../components/Message";
 import { formValidate } from "../../../services/helper";
 
-const AddJob = ({ getJobList }, ref) => {
+const AddJob = ({ getListWork }, ref) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const [file, setFile] = useState(null);
+
   useImperativeHandle(ref, () => ({
     open: () => {
       setIsModalOpen(true);
@@ -17,33 +18,24 @@ const AddJob = ({ getJobList }, ref) => {
 
   const onFinish = async (values) => {
     try {
-      if (file) {
+      const jobResponse = await apiAddJob(values);
+
+      const newJobID = jobResponse.content.id;
+
+      if (newJobID && file) {
         const formData = new FormData();
-        formData.append("file", file);
-        const response = await apiUploadImage(
-          values.maChiTietLoaiCongViec,
-          formData
-        );
-
-        if (response && response.success) {
-          const jobData = { ...values, hinhAnh: response.fileName };
-          await apiAddJob(jobData);
-
-          ShowSuccess("Thêm công việc thành công");
-          handleCancel();
-          getJobList();
-        } else {
-          ShowError("Tải lên hình ảnh thất bại");
-        }
+        formData.append("formFile", file);
+        await apiUploadImage(newJobID, formData);
+        ShowSuccess("Add job successfully");
+        handleCancel();
+        getListWork();
       } else {
-        ShowError("Vui lòng chọn một hình ảnh trước khi thêm");
+        ShowError("Add job fail");
       }
     } catch (error) {
-      console.error(error);
-      ShowError("Thêm công việc thất bại");
+      ShowError(error?.response?.data?.content);
     }
   };
-
   const handleCancel = () => {
     setIsModalOpen(false);
     form.resetFields();
@@ -51,6 +43,7 @@ const AddJob = ({ getJobList }, ref) => {
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
+
   return (
     <>
       <StyledModal

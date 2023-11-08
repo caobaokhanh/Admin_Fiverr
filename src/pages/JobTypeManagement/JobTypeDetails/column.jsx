@@ -13,7 +13,7 @@ export const column = (onDelete, onEdit) => [
   {
     key: "name",
     title: "Name",
-    dataIndex: "tenCongViec",
+    dataIndex: "tenNhom",
     render: (value) => (
       <Typography.Paragraph
         ellipsis={{
@@ -29,57 +29,24 @@ export const column = (onDelete, onEdit) => [
     ),
   },
   {
-    key: "price",
-    title: "Price",
-    dataIndex: "giaTien",
+    key: "nameDetails",
+    title: "Name Details",
+    dataIndex: "dsChiTietLoai",
     align: "center",
     width: 120,
-    render: (value) => `${value}$`,
-  },
-  {
-    key: "description",
-    title: "Description",
-    dataIndex: "moTa",
-    render: (value) => (
+    render: (dsChiTietLoai) => (
       <Typography.Paragraph
         ellipsis={{
           tooltip: {
             overlayInnerStyle: { whiteSpace: "pre-line" },
-            overlayClassName: "styled-tooltip",
           },
           rows: 2,
         }}
         style={{ margin: 0 }}
       >
-        {value}
+        {dsChiTietLoai.map((item) => item.tenChiTiet).join(", ")}
       </Typography.Paragraph>
     ),
-  },
-  {
-    key: "shortDescription",
-    title: "Short description",
-    dataIndex: "moTaNgan",
-    render: (value) => (
-      <Typography.Paragraph
-        ellipsis={{
-          tooltip: {
-            overlayInnerStyle: { whiteSpace: "pre-line" },
-            overlayClassName: "styled-tooltip",
-          },
-          rows: 2,
-        }}
-        style={{ margin: 0 }}
-      >
-        {value}
-      </Typography.Paragraph>
-    ),
-  },
-  {
-    key: "evaluate",
-    title: "Evaluate",
-    dataIndex: "danhGia",
-    align: "center",
-    width: 80,
   },
   {
     title: "",

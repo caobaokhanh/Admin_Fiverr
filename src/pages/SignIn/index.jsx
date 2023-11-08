@@ -41,6 +41,12 @@ const SignIn = () => {
       ShowError(error?.response?.data?.content);
     }
   };
+  const fillDemoCredentials = () => {
+    form.setFieldsValue({
+      email: "khanh@gmail.com",
+      password: "khanh123123",
+    });
+  };
 
   return (
     <Wrapper>
@@ -90,6 +96,13 @@ const SignIn = () => {
                     >
                       Login
                     </h1>
+                    <Button
+                      type="default"
+                      size="large"
+                      onClick={fillDemoCredentials}
+                    >
+                      Try me !!
+                    </Button>
                   </div>
                   <Form.Item
                     name="email"

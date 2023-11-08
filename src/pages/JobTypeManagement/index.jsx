@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navigation from "./Navigation";
 import { Card } from "antd";
 import JobType from "./JobType";
+import JobTypeDetails from "./JobTypeDetails";
 
 const View = () => {
   const [tab, setTab] = useState("1");
@@ -30,6 +31,12 @@ const View = () => {
       </Card>
       <div style={{ padding: 12 }}>
         <Card bodyStyle={{ padding: 15 }}> {tab === "1" && <JobType />}</Card>
+      </div>
+      <div style={{ padding: 12 }}>
+        <Card bodyStyle={{ padding: 15 }}>
+          {" "}
+          {tab === "2" && <JobTypeDetails />}
+        </Card>
       </div>
     </>
   );

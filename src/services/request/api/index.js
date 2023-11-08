@@ -83,11 +83,15 @@ export const apiUploadImage = async (maCongViec, formData) => {
 
     return data;
   } catch (error) {
-    console.error("Lỗi khi tải lên hình ảnh:", error);
     throw error;
   }
 };
 
+export const apiUpdateJob = async (params) => {
+  const { data } = await await httpAdmin.put(`/cong-viec/${params.id}`, params);
+
+  return data;
+};
 //job Type
 
 export const apiGetJobsTypeList = async () => {
@@ -118,6 +122,57 @@ export const apiDeleteJobsType = async (params) => {
   return data;
 };
 
+//job type details
+export const apiGetJobsTypeListDetails = async () => {
+  const { data } = await httpAdmin.get("/chi-tiet-loai-cong-viec");
+
+  return data;
+};
+
+export const apiCreateJobsTypeDetails = async (params) => {
+  const { data } = await httpAdmin.post("/chi-tiet-loai-cong-viec", params);
+
+  return data;
+};
+
+export const apiUpdateJobsTypeDetails = async (params) => {
+  const { data } = await httpAdmin.put(
+    `/chi-tiet-loai-cong-viec/${params.id}`,
+    params
+  );
+
+  return data;
+};
+export const apiDeleteJobsTypeDetails = async (params) => {
+  const { data } = await httpAdmin.delete(
+    `/chi-tiet-loai-cong-viec/${params}`,
+    {
+      params: {
+        id: params,
+      },
+    }
+  );
+
+  return data;
+};
+
+export const apiUploadImageJobType = async (maChiTietCongViec, formData) => {
+  try {
+    const { data } = await httpAdmin.post(
+      `/cong-viec/upload-hinh-cong-viec/${maChiTietCongViec}`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 //booking job
 export const apiGetBookingJobsList = async () => {
   const { data } = await httpAdmin.get("/thue-cong-viec");
