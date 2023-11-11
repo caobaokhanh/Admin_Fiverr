@@ -1,9 +1,10 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { Form, Input, Row, Col, Radio, Space, Button } from "antd";
+import { Form, Input, Row, Col, Radio, Space, Button, Select } from "antd";
 import { StyledModal } from "./styled";
 import { apiCreateUser } from "../../../services/request/api";
 import { ShowError, ShowSuccess } from "../../../components/Message";
 import { formValidate } from "../../../services/helper";
+import { Option } from "antd/es/mentions";
 
 const Add = ({ getListUser }, ref) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,8 +19,8 @@ const Add = ({ getListUser }, ref) => {
 
   const onFinish = async (values) => {
     try {
-      await apiCreateUser({ ...values, role: "ADMIN" });
-      ShowSuccess("Add administrators successfully");
+      await apiCreateUser({ ...values });
+      ShowSuccess("Add account successfully");
       handleCancel();
       getListUser();
     } catch (error) {
@@ -40,7 +41,7 @@ const Add = ({ getListUser }, ref) => {
         width="50%"
         footer={null}
         destroyOnClose
-        title={<h3>Add administrators</h3>}
+        title={<h3>Add account</h3>}
       >
         <Form layout="vertical" form={form} onFinish={onFinish}>
           <Row gutter={20}>
@@ -72,7 +73,11 @@ const Add = ({ getListUser }, ref) => {
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item label="Phone" name="phone">
+              <Form.Item
+                label="Phone"
+                name="phone"
+                rules={[formValidate.required, formValidate.phoneNumber]}
+              >
                 <Input placeholder="Phone" />
               </Form.Item>
             </Col>
@@ -88,7 +93,18 @@ const Add = ({ getListUser }, ref) => {
                 </Radio.Group>
               </Form.Item>
             </Col>
-
+            <Col span={24}>
+              <Form.Item
+                label="Role"
+                name="role"
+                rules={[formValidate.required]}
+              >
+                <Select placeholder="Select a role">
+                  <Option value="ADMIN">ADMIN</Option>
+                  <Option value="USER">USER</Option>
+                </Select>
+              </Form.Item>
+            </Col>
             <Col span={24} style={{ textAlign: "center", marginTop: 10 }}>
               <Space size={15}>
                 <Button

@@ -84,10 +84,10 @@ const Edit = ({ getListWork }, ref) => {
               <img src={previewImage} width="150px" height="150px" alt="" />
             </Col>
             <Col span={12}>
-              <Form.Item label="Hình ảnh">
+              <Form.Item label="Image">
                 <Input
                   type="file"
-                  placeholder="Hình ảnh"
+                  placeholder="Image"
                   accept="image/*"
                   onChange={handleFileChange}
                 />
@@ -96,43 +96,43 @@ const Edit = ({ getListWork }, ref) => {
 
             <Col span={24}>
               <Form.Item
-                label="Tên công việc"
+                label="Name tag"
                 rules={[formValidate.required]}
                 name="tenCongViec"
               >
-                <Input placeholder="Tên công việc" />
+                <Input placeholder="Name tag" />
               </Form.Item>
             </Col>
             <Col span={24}>
               <Form.Item
-                label="Đánh giá"
+                label="Evaluate"
                 rules={[formValidate.required]}
                 name="danhGia"
               >
-                <Input placeholder="Đánh giá" />
+                <Input placeholder="Evaluate" />
               </Form.Item>
             </Col>
             <Col span={24}>
               <Form.Item
-                label="Mã loại công việc"
+                label="Id job type details"
                 rules={[formValidate.required]}
                 name="maChiTietLoaiCongViec"
               >
-                <Input placeholder="ID Job Type" />
+                <Input placeholder="Id job type details" />
               </Form.Item>
             </Col>
             <Col span={24}>
               <Form.Item
-                label="Giá tiền"
+                label="Price"
                 rules={[formValidate.required]}
                 name="giaTien"
               >
-                <Input placeholder="Giá" />
+                <Input placeholder="Price" />
               </Form.Item>
             </Col>
             <Col span={24}>
               <Form.Item
-                label="Sao công việc"
+                label="Rate"
                 rules={[formValidate.required]}
                 name="saoCongViec"
               >
@@ -141,7 +141,7 @@ const Edit = ({ getListWork }, ref) => {
             </Col>
             <Col span={24}>
               <Form.Item
-                label="Mô tả"
+                label="Description"
                 rules={[formValidate.required]}
                 name="moTa"
               >
@@ -150,7 +150,7 @@ const Edit = ({ getListWork }, ref) => {
             </Col>
             <Col span={24}>
               <Form.Item
-                label="Mô tả ngắn"
+                label="Description Sort"
                 rules={[formValidate.required]}
                 name="moTaNgan"
               >

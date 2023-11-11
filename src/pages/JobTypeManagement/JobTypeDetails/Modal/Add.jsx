@@ -20,32 +20,23 @@ const Add = ({ getListJobTypeDetails }, ref) => {
 
   const onFinish = async (values) => {
     try {
-      await apiCreateJobsTypeDetails(values);
-      ShowSuccess("Add job type details successfully");
-      getListJobTypeDetails();
-      handleCancel();
+      const jobTypResponse = await apiCreateJobsTypeDetails(values);
+      const newJobTypeId = jobTypResponse.content.id;
+      console.log(newJobTypeId);
+      if (newJobTypeId && file) {
+        const formData = new FormData();
+        formData.append("formFile", file);
+        await apiUploadImageJobType(newJobTypeId, formData);
+        ShowSuccess("Add job type details successfully");
+        handleCancel();
+        getListJobTypeDetails();
+      } else {
+        ShowError("Add job type details fail");
+      }
     } catch (error) {
       ShowError(error?.response?.data?.content);
     }
   };
-  //   const onFinish = async (values) => {
-  //     try {
-  //       const jobTypResponse = await apiCreateJobsTypeDetails(values);
-  //       const newJobTypeId = jobTypResponse.content.id;
-  //       if (newJobTypeId && file) {
-  //         const formData = new FormData();
-  //         formData.append("formFile", file);
-  //         await apiUploadImageJobType(newJobTypeId, formData);
-  //         ShowSuccess("Add job type details successfully");
-  //         handleCancel();
-  //         getListJobTypeDetails();
-  //       } else {
-  //         ShowError("Add job type details fail");
-  //       }
-  //     } catch (error) {
-  //       ShowError(error?.response?.data?.content);
-  //     }
-  //   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -62,7 +53,7 @@ const Add = ({ getListJobTypeDetails }, ref) => {
         width="50%"
         footer={null}
         destroyOnClose
-        title={<h3>Add job type</h3>}
+        title={<h3>Add job type details</h3>}
       >
         <Form layout="vertical" form={form} onFinish={onFinish}>
           <Row gutter={20}>
@@ -75,8 +66,30 @@ const Add = ({ getListJobTypeDetails }, ref) => {
                 <Input placeholder="Name Details" />
               </Form.Item>
             </Col>
+            <Col span={24}>
+              <Form.Item
+                label="Id job details"
+                name="maLoaiCongViec"
+                rules={[formValidate.required]}
+              >
+                <Input type="number" placeholder="Id job details" />
+              </Form.Item>
+            </Col>
             {/* <Col span={24}>
-              <Form.Item label="Hình ảnh" rules={[formValidate.required]}>
+              <Form.Item
+                label="List details"
+                name="danhSachChiTiet"
+                rules={[formValidate.required]}
+              >
+                <Input placeholder="List details" />
+              </Form.Item>
+            </Col> */}
+            <Col span={24}>
+              <Form.Item
+                label="Hình ảnh"
+                rules={[formValidate.required]}
+                name="hinhAnh"
+              >
                 <Input
                   type="file"
                   placeholder="Hình ảnh"
@@ -84,7 +97,7 @@ const Add = ({ getListJobTypeDetails }, ref) => {
                   onChange={handleFileChange}
                 />
               </Form.Item>
-            </Col> */}
+            </Col>
             <Col span={24} style={{ textAlign: "center" }}>
               <Space>
                 <Button

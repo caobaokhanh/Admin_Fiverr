@@ -102,7 +102,7 @@ const UserManagement = () => {
             </div>
             <div>
               <Button type="primary" onClick={() => addAdminRef.current.open()}>
-                Add administrators
+                Add account
               </Button>
             </div>
           </Wrapper>

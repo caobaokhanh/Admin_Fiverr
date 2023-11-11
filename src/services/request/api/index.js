@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import httpAdmin from "../httpAdmin";
 
 export const apiSignIn = async (params) => {
@@ -130,7 +131,10 @@ export const apiGetJobsTypeListDetails = async () => {
 };
 
 export const apiCreateJobsTypeDetails = async (params) => {
-  const { data } = await httpAdmin.post("/chi-tiet-loai-cong-viec", params);
+  const { data } = await httpAdmin.post(
+    "/chi-tiet-loai-cong-viec/them-nhom-chi-tiet-loai",
+    params
+  );
 
   return data;
 };
@@ -159,7 +163,7 @@ export const apiDeleteJobsTypeDetails = async (params) => {
 export const apiUploadImageJobType = async (maChiTietCongViec, formData) => {
   try {
     const { data } = await httpAdmin.post(
-      `/cong-viec/upload-hinh-cong-viec/${maChiTietCongViec}`,
+      `/chi-tiet-loai-cong-viec/upload-hinh-nhom-loai-cong-viec/${maChiTietCongViec}`,
       formData,
       {
         headers: {

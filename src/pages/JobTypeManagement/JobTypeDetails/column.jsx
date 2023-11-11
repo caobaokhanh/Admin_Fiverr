@@ -10,6 +10,7 @@ export const column = (onDelete, onEdit) => [
     width: 150,
     fixed: "left",
   },
+
   {
     key: "name",
     title: "Name",
@@ -27,6 +28,11 @@ export const column = (onDelete, onEdit) => [
         {value}
       </Typography.Paragraph>
     ),
+  },
+  {
+    key: "Id",
+    title: "Id Job Type",
+    dataIndex: "maLoaiCongviec",
   },
   {
     key: "nameDetails",

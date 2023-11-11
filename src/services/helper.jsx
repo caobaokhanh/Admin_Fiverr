@@ -8,4 +8,8 @@ export const formValidate = {
     type: "email",
     message: "Invalid email",
   },
+  phoneNumber: {
+    pattern: /^[0-9]{10}$/,
+    message: "Invalid phone number",
+  },
 };

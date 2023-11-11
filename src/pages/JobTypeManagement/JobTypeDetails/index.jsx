@@ -6,7 +6,7 @@ import { useDebouncedCallback } from "use-debounce";
 import Swal from "sweetalert2";
 import { Wrapper } from "./styled";
 import Add from "./Modal/Add";
-// import EditJob from "./Modal/EditJob";
+import Edit from "./Modal/Edit";
 import {
   apiGetJobsTypeListDetails,
   apiDeleteJobsTypeDetails,
@@ -75,7 +75,7 @@ const JobManagement = () => {
         ref={addJobTypeDetailsRef}
         getListJobTypeDetails={getListJobTypeDetails}
       />
-      {/* <EditJob ref={editRef} getListJobTypeDetails={getListJobTypeDetails} /> */}
+      <Edit ref={editRef} getListJobTypeDetails={getListJobTypeDetails} />
       <Card bodyStyle={{ padding: "10px 25px" }}>
         <h2>Job Type Details</h2>
       </Card>

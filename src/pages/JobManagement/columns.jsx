@@ -3,6 +3,12 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export const column = (onDelete, onEdit) => [
   {
+    key: "id",
+    title: "Id Job",
+    dataIndex: "id",
+  },
+
+  {
     key: "image",
     title: "Image",
     dataIndex: "hinhAnh",

@@ -1,7 +1,15 @@
-import { Tag, Tooltip, Button, Space } from "antd";
+import { Tag, Tooltip, Button, Space, Image } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export const column = (onEdit, onDelete) => [
+  {
+    key: "avatar",
+    title: "Avatar",
+    dataIndex: "avatar",
+    render: (imageUrl) => <Image width="50px" height="50px" src={imageUrl} />,
+    width: 150,
+    fixed: "left",
+  },
   {
     key: "name",
     title: "Name",

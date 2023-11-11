@@ -58,67 +58,67 @@ const AddJob = ({ getListWork }, ref) => {
           <Row gutter={20}>
             <Col span={12}>
               <Form.Item
-                label="Tên công việc"
+                label="Name tag"
                 rules={[formValidate.required]}
                 name="tenCongViec"
               >
-                <Input placeholder="Tên công việc" />
+                <Input placeholder="Name tag" />
               </Form.Item>
               <Form.Item
-                label="Giá"
+                label="Price"
                 rules={[formValidate.required]}
                 name="giaTien"
               >
-                <Input type="number" placeholder="Giá" />
+                <Input type="number" placeholder="Price" />
               </Form.Item>
               <Form.Item
-                label="Mã chi tiết loại công việc"
+                label="Id job type details"
                 rules={[formValidate.required]}
                 name="maChiTietLoaiCongViec"
               >
-                <Input type="number" placeholder="Mã chi tiết loại công việc" />
+                <Input type="number" placeholder="Id job type details" />
               </Form.Item>
               <Form.Item
-                label="Mô tả"
+                label="Description"
                 rules={[formValidate.required]}
                 name="moTa"
               >
-                <Input.TextArea rows={4} placeholder="Mô tả" />
+                <Input.TextArea rows={4} placeholder="Description" />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item
-                label="Đánh giá"
+                label="Evaluate"
                 rules={[formValidate.required]}
                 name="danhGia"
               >
-                <Input type="number" placeholder="Đánh giá" />
+                <Input type="number" placeholder="Evaluate" />
               </Form.Item>
               <Form.Item
-                label="Hình ảnh"
+                label="Image"
                 rules={[formValidate.required]}
                 name="hinhAnh"
               >
                 <Input
                   type="file"
-                  placeholder="Hình ảnh"
+                  placeholder="Image"
                   accept="image/*"
                   onChange={handleFileChange}
                 />
               </Form.Item>
               <Form.Item
-                label="Sao công việc"
+                label="Rate"
                 rules={[formValidate.required]}
                 name="saoCongViec"
               >
-                <Input type="number" placeholder="Sao công việc" />
+                <Input type="number" placeholder="Rate" />
               </Form.Item>
               <Form.Item
-                label="Mô tả ngắn"
+                label="Description sort"
                 rules={[formValidate.required]}
                 name="moTaNgan"
               >
-                <Input.TextArea rows={4} placeholder="Mô tả ngắn" />
+                <Input.TextArea rows={4} placeholder="Description sort" />
               </Form.Item>
             </Col>
           </Row>
@@ -131,14 +131,14 @@ const AddJob = ({ getListWork }, ref) => {
                 htmlType="submit"
                 style={{ width: 100 }}
               >
-                Thêm
+                Add
               </Button>
               <Button
                 onClick={handleCancel}
                 size="large"
                 style={{ width: 100 }}
               >
-                Đóng
+                Close
               </Button>
             </Space>
           </Col>
