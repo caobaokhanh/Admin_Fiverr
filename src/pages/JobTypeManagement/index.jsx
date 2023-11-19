@@ -30,10 +30,13 @@ const View = () => {
         </div>
       </Card>
       <div style={{ padding: 12 }}>
-        <Card bodyStyle={{ padding: 15 }}> {tab === "1" && <JobType />}</Card>
+        <Card bodyStyle={{ padding: 15 }} style={{ background: "gray" }}>
+          {" "}
+          {tab === "1" && <JobType />}
+        </Card>
       </div>
       <div style={{ padding: 12 }}>
-        <Card bodyStyle={{ padding: 15 }}>
+        <Card bodyStyle={{ padding: 15 }} style={{ background: "gray" }}>
           {" "}
           {tab === "2" && <JobTypeDetails />}
         </Card>

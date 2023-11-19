@@ -74,7 +74,7 @@ const JobManagement = () => {
         <h2>Job Management</h2>
       </Card>
       <div style={{ padding: 10 }}>
-        <Card bodyStyle={{ padding: 15 }}>
+        <Card bodyStyle={{ padding: 15 }} style={{ background: "gray" }}>
           <Wrapper>
             <div style={{ width: "100%" }}>
               <Form layout="inline">

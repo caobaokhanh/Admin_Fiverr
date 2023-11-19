@@ -68,8 +68,7 @@ const Admin = () => {
         <Header
           style={{
             padding: "0 15px",
-            background:
-              "linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%)",
+            background: "green",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -123,15 +122,17 @@ const Admin = () => {
             onCollapse={(value) => setCollapsed(value)}
             collapsedWidth={70}
             width={230}
+            // style={{ background: "green" }}
           >
             <Menu
-              theme="dark"
+              theme="light"
               selectedKeys={[activeKey]}
               onClick={(item) => {
                 navigation(item.key);
                 setActiveKey(item.key);
               }}
               mode="inline"
+              // style={{ background: "green" }}
               items={[
                 {
                   key: "/",

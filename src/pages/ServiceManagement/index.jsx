@@ -71,7 +71,7 @@ const ServiceManagement = () => {
         <h2>Service Management</h2>
       </Card>
       <div style={{ padding: 10 }}>
-        <Card bodyStyle={{ padding: 15 }}>
+        <Card bodyStyle={{ padding: 15 }} style={{ background: "gray" }}>
           <Table
             size="small"
             columns={column(user, work, onDelete)}

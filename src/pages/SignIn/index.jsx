@@ -41,98 +41,58 @@ const SignIn = () => {
       ShowError(error?.response?.data?.content);
     }
   };
-  const fillDemoCredentials = () => {
-    form.setFieldsValue({
-      email: "khanh@gmail.com",
-      password: "khanh123123",
-    });
-  };
 
   return (
     <Wrapper>
       <Container>
         <Card bodyStyle={{ padding: 0 }}>
-          <Row>
-            <Col lg={14} xs={0}>
-              <ContentLeft>
-                <div
+          <ContentRight style={{ background: "gray" }}>
+            <StyledForm layout="vertical" form={form} onFinish={onFinish}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  marginBottom: "16px",
+                }}
+              >
+                <h1
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    fontSize: 30,
+                    textTransform: "uppercase",
+                    letterSpacing: 5,
                   }}
                 >
-                  <h1
-                    style={{
-                      letterSpacing: 10,
-                      color: "white",
-                      fontSize: "60px",
-                    }}
-                  >
-                    FIVERR
-                  </h1>
-                </div>
-              </ContentLeft>
-            </Col>
-            <Col lg={10} md={24} style={{ flex: "1" }}>
-              <ContentRight>
-                <StyledForm layout="vertical" form={form} onFinish={onFinish}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      flexDirection: "column",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    <h1
-                      style={{
-                        fontSize: 30,
-                        textTransform: "uppercase",
-                        letterSpacing: 5,
-                      }}
-                    >
-                      Login
-                    </h1>
-                    <Button
-                      type="default"
-                      size="large"
-                      onClick={fillDemoCredentials}
-                    >
-                      Try me !!
-                    </Button>
-                  </div>
-                  <Form.Item
-                    name="email"
-                    label="Email"
-                    rules={[formValidate.required, formValidate.email]}
-                  >
-                    <Input placeholder="Email" />
-                  </Form.Item>
-                  <Form.Item
-                    name="password"
-                    label="Password"
-                    rules={[formValidate.required]}
-                  >
-                    <Input.Password placeholder="Password" />
-                  </Form.Item>
-                  <Form.Item style={{ textAlign: "center", marginTop: 30 }}>
-                    <Button
-                      htmlType="submit"
-                      type="primary"
-                      size="large"
-                      style={{ width: "100%" }}
-                      disabled={isLoading}
-                    >
-                      <p>Login</p>
-                    </Button>
-                  </Form.Item>
-                </StyledForm>
-              </ContentRight>
-            </Col>
-          </Row>
+                  Login
+                </h1>
+              </div>
+              <Form.Item
+                name="email"
+                label="Email"
+                rules={[formValidate.required, formValidate.email]}
+              >
+                <Input placeholder="Email" />
+              </Form.Item>
+              <Form.Item
+                name="password"
+                label="Password"
+                rules={[formValidate.required]}
+              >
+                <Input.Password placeholder="Password" />
+              </Form.Item>
+              <Form.Item style={{ textAlign: "center", marginTop: 30 }}>
+                <Button
+                  htmlType="submit"
+                  type="primary"
+                  size="large"
+                  style={{ width: "50%" }}
+                  disabled={isLoading}
+                >
+                  <p>Đăng nhập</p>
+                </Button>
+              </Form.Item>
+            </StyledForm>
+          </ContentRight>
         </Card>
       </Container>
     </Wrapper>
